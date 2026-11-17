@@ -80,15 +80,6 @@ export const MORE = [
     accent: 'var(--blue)', onAccent: 'var(--ink)', motif: 'rings',
   },
   {
-    slug: 'poland-spring',
-    title: 'Poland Spring',
-    discipline: 'Packaging redesign',
-    summary:
-      'A redesign of Poland Spring as a modern, environmentally conscious water brand, using a refined, minimal packaging system.',
-    tags: ['Packaging redesign', 'Brand identity', 'Sustainable system'],
-    accent: 'var(--lime)', onAccent: 'var(--paper)', motif: 'dots',
-  },
-  {
     slug: 'panettone',
     title: 'Panettone',
     discipline: 'Packaging / Seasonal identity',
