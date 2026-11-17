@@ -1,12 +1,13 @@
 import { useRef, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { Link } from '../lib/router.jsx'
+import { Wiggle } from '../components/Bits.jsx'
 
 function Card({ id, title, note, children, className = '' }) {
   return (
     <section aria-labelledby={id} className={`border-2 border-ink ${className}`}>
       <div className="flex items-baseline justify-between gap-4 border-b-2 border-ink px-4 py-3">
-        <h2 id={id} className="font-display text-xl font-bold">{title}</h2>
+        <h2 id={id} className="font-display text-3xl">{title}</h2>
         <p className="label">{note}</p>
       </div>
       {children}
@@ -26,7 +27,7 @@ function TypePull() {
   return (
     <Card id="pull" title="Type pull" note="Move over the letters. Variable weight and width.">
       <div onPointerMove={move} className="touch-none select-none overflow-hidden px-4 py-10 text-center" data-cursor="pull">
-        <p aria-label="Yi Li" className="font-display text-[clamp(5rem,22vw,17rem)] leading-[0.9] tracking-[-0.04em]" style={{ fontWeight: w, fontVariationSettings: `"wdth" ${wd}` }}>Yi Li</p>
+        <p aria-label="Yi Li" className="text-[clamp(5rem,22vw,17rem)] leading-[0.9] tracking-[-0.04em]" style={{ fontFamily: "'Bricolage Grotesque Variable', sans-serif", fontWeight: w, fontVariationSettings: `"wdth" ${wd}` }}>Yi Li</p>
       </div>
       <div className="flex flex-wrap items-center gap-6 border-t-2 border-ink px-4 py-3">
         <label className="label flex items-center gap-3">Weight {w}<input type="range" min="300" max="800" value={w} onChange={(e) => setW(+e.target.value)} className="accent-[var(--ink)]" /></label>
@@ -92,13 +93,50 @@ function DimYum() {
   )
 }
 
+const INKS = [['Red', '#e63329'], ['Cream', '#f2e8d6'], ['Salmon', '#f08a7a'], ['Gold', '#f2b33d']]
+
+function DoodlePad() {
+  const cv = useRef(null)
+  const drawing = useRef(false)
+  const last = useRef(null)
+  const [ink, setInk] = useState(INKS[0][1])
+  const [size, setSize] = useState(8)
+  const pt = (e) => {
+    const r = cv.current.getBoundingClientRect()
+    return [((e.clientX - r.left) / r.width) * cv.current.width, ((e.clientY - r.top) / r.height) * cv.current.height]
+  }
+  const start = (e) => { drawing.current = true; last.current = pt(e); cv.current.setPointerCapture(e.pointerId); dot(last.current) }
+  const dot = ([x, y]) => { const c = cv.current.getContext('2d'); c.fillStyle = ink; c.beginPath(); c.arc(x, y, size / 2, 0, 7); c.fill() }
+  const move = (e) => {
+    if (!drawing.current) return
+    const c = cv.current.getContext('2d'); const p = pt(e)
+    c.strokeStyle = ink; c.lineWidth = size; c.lineCap = 'round'; c.lineJoin = 'round'
+    c.beginPath(); c.moveTo(...last.current); c.lineTo(...p); c.stroke(); last.current = p
+  }
+  const stop = () => { drawing.current = false }
+  const clear = () => cv.current.getContext('2d').clearRect(0, 0, cv.current.width, cv.current.height)
+  const save = () => { const a = document.createElement('a'); a.download = 'doodle.png'; a.href = cv.current.toDataURL('image/png'); a.click() }
+  return (
+    <Card id="doodle" title="Doodle pad" note="Draw with a mouse, finger or pen.">
+      <canvas ref={cv} width="1400" height="560" aria-label="Drawing canvas" className="block h-[300px] w-full cursor-crosshair touch-none bg-[color-mix(in_srgb,var(--ink)_5%,var(--paper))] md:h-[420px]" onPointerDown={start} onPointerMove={move} onPointerUp={stop} onPointerLeave={stop} />
+      <div className="flex flex-wrap items-center gap-3 border-t-2 border-ink px-4 py-3">
+        {INKS.map(([n, c]) => <button key={n} type="button" aria-label={n} aria-pressed={ink === c} onClick={() => setInk(c)} className="h-7 w-7 rounded-full border-2 border-ink/60 aria-pressed:outline aria-pressed:outline-2 aria-pressed:outline-offset-2 aria-pressed:outline-ink" style={{ background: c }} />)}
+        <label className="label ml-2 flex items-center gap-2">Brush<input type="range" min="2" max="36" value={size} onChange={(e) => setSize(+e.target.value)} className="accent-[var(--ink)]" /></label>
+        <button className="chip-btn ml-auto" onClick={clear}>Clear</button>
+        <button className="chip-btn" onClick={save}>Save PNG</button>
+      </div>
+    </Card>
+  )
+}
+
 export default function Playground() {
   return (
     <main id="main" className="px-gutter pb-24 pt-28 md:pt-32">
       <Link to="/" className="label u-link" data-cursor="back">Back home</Link>
-      <h1 className="mt-6 max-w-[12ch] font-display text-[clamp(3.4rem,11vw,10rem)] font-extrabold leading-[0.9] tracking-[-0.045em]">Playground</h1>
+      <h1 className="mt-6 font-display text-[clamp(4.5rem,14vw,13rem)] leading-[0.9]"><Wiggle text="Playground" /></h1>
       <p className="mt-6 max-w-[48ch] text-lg">Small experiments that don’t belong to a client. Some of them are for testing an idea, and some are just for fun.</p>
       <div className="mt-12 grid gap-8">
+        <DoodlePad />
         <TypePull />
         <div className="grid gap-8 lg:grid-cols-2">
           <TileKit />

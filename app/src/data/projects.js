@@ -12,7 +12,7 @@ export const FEATURED = [
     year: PH, // e.g. '2026'
     summary: 'An event brand and visual identity.',
     accent: 'var(--blue)',
-    onAccent: 'var(--paper)',
+    onAccent: 'var(--ink)',
     motif: 'rings',
     role: PH,
     tools: PH,
@@ -33,7 +33,7 @@ export const FEATURED = [
     year: PH,
     summary: 'An interactive website and digital experience.',
     accent: 'var(--blush)',
-    onAccent: 'var(--ink)',
+    onAccent: 'var(--paper)',
     motif: 'bars',
     role: PH,
     tools: PH,
@@ -53,7 +53,7 @@ export const FEATURED = [
     year: PH,
     summary: 'An interactive web experience.',
     accent: 'var(--lime)',
-    onAccent: 'var(--ink)',
+    onAccent: 'var(--paper)',
     motif: 'dots',
     role: PH,
     tools: PH,
@@ -77,7 +77,7 @@ export const MORE = [
     summary:
       'A conceptual craft gin brand inspired by the maritime history of Brooklyn’s waterfront and the anchor as a symbol of stability, navigation, and identity.',
     tags: ['Packaging design', 'Brand identity', 'Label system'],
-    accent: 'var(--blue)', onAccent: 'var(--paper)', motif: 'rings',
+    accent: 'var(--blue)', onAccent: 'var(--ink)', motif: 'rings',
   },
   {
     slug: 'poland-spring',
@@ -86,7 +86,7 @@ export const MORE = [
     summary:
       'A redesign of Poland Spring as a modern, environmentally conscious water brand, using a refined, minimal packaging system.',
     tags: ['Packaging redesign', 'Brand identity', 'Sustainable system'],
-    accent: 'var(--lime)', onAccent: 'var(--ink)', motif: 'dots',
+    accent: 'var(--lime)', onAccent: 'var(--paper)', motif: 'dots',
   },
   {
     slug: 'panettone',
@@ -95,7 +95,7 @@ export const MORE = [
     summary:
       'A contemporary reinterpretation of a traditional Italian holiday dessert, presented through a refined, structured packaging system.',
     tags: ['Packaging design', 'Seasonal identity', 'Structural exploration'],
-    accent: 'var(--blush)', onAccent: 'var(--ink)', motif: 'bars',
+    accent: 'var(--blush)', onAccent: 'var(--paper)', motif: 'bars',
   },
   {
     slug: 'ten-principles',

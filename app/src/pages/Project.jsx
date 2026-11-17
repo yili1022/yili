@@ -24,7 +24,7 @@ export default function Project({ slug }) {
     <main id="main" className="pb-0 pt-14">
       <header className="px-gutter pb-10 pt-12 md:pt-20" style={{ background: p.accent, color: p.onAccent }}>
         <Link to="/" section="work" className="label !text-current u-link" data-cursor="back">Back to work</Link>
-        <h1 className="mt-8 font-display text-[clamp(3.2rem,13vw,13rem)] font-extrabold leading-[0.88] tracking-[-0.045em]">{p.title}</h1>
+        <h1 className="mt-8 font-display text-[clamp(4rem,15vw,15rem)] leading-[0.9]">{p.title}</h1>
         <p className="mt-6 max-w-[40ch] text-xl leading-snug">{p.summary}</p>
       </header>
 
@@ -49,7 +49,7 @@ export default function Project({ slug }) {
           if (!text && !SITE.showPlaceholders) return null
           return (
             <section key={k} aria-labelledby={`${k}-h`} className="md:col-span-6 md:[&:nth-child(even)]:col-start-7">
-              <h2 id={`${k}-h`} className="font-display text-3xl font-bold tracking-tight">{label}</h2>
+              <h2 id={`${k}-h`} className="font-display text-4xl">{label}</h2>
               {text ? (
                 <p className="mt-3 max-w-[52ch] text-lg leading-relaxed">{text}</p>
               ) : (
@@ -73,7 +73,7 @@ export default function Project({ slug }) {
 
       <Link to={`/work/${next.slug}`} data-cursor="next" className="group block border-t-2 border-ink px-gutter py-10 transition-colors hover:bg-ink hover:text-paper">
         <span className="label !text-current">Next project</span>
-        <span className="mt-2 block font-display text-[clamp(2.6rem,9vw,8rem)] font-extrabold leading-[0.9] tracking-[-0.04em]">{next.title}</span>
+        <span className="mt-2 block font-display text-[clamp(3.2rem,10vw,9rem)] leading-[0.95]">{next.title}</span>
       </Link>
     </main>
   )

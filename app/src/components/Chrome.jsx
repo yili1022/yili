@@ -35,8 +35,8 @@ export function Header() {
     <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-paper">
       <a href="#main" className="sr-only-focusable btn btn-solid left-2 top-2 z-[60] bg-paper">Skip to content</a>
       <div className="flex h-14 items-center justify-between px-gutter">
-        <Link to="/" className="flex items-baseline gap-2 font-display text-lg font-bold leading-none" aria-label="Yi Li (GG), home">
-          Yi Li <span className="label hidden sm:inline">GG</span>
+        <Link to="/" className="flex items-baseline gap-2 font-display text-2xl leading-none" aria-label="Yi Li, home">
+          Yi Li
         </Link>
         <nav aria-label="Main" className="hidden items-center gap-8 md:flex">
           {NAV.map((n) => (
@@ -81,7 +81,7 @@ export function Footer() {
     <footer className="relative border-t border-line px-gutter pb-10 pt-8">
       <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
         <div>
-          <p className="font-display text-2xl font-bold leading-none">Yi Li (GG)</p>
+          <p className="font-display text-3xl leading-none">Yi Li</p>
           <p className="label mt-2">Brand identity and interactive design, {SITE.school}.</p>
         </div>
         <ul className="label flex flex-wrap gap-x-5 gap-y-1">
@@ -91,7 +91,7 @@ export function Footer() {
           <li><a className="u-link" href={SITE.github} target="_blank" rel="noreferrer">GitHub</a></li>
         </ul>
       </div>
-      <p className="label mt-8">© {new Date().getFullYear()} Yi Li. Try typing “gg”.</p>
+      <p className="label mt-8">© {new Date().getFullYear()} Yi Li. Try typing “hello”.</p>
     </footer>
   )
 }

@@ -2,7 +2,7 @@ import { useRef, useState } from 'react'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 import { Link } from '../lib/router.jsx'
 import Plate from '../components/Plate.jsx'
-import { Section } from '../components/Bits.jsx'
+import { Section, Wiggle } from '../components/Bits.jsx'
 import { FEATURED, MORE } from '../data/projects.js'
 
 function Row({ p, onHover, active }) {
@@ -20,7 +20,7 @@ function Row({ p, onHover, active }) {
         <span aria-hidden="true" className="absolute inset-0 origin-bottom scale-y-0 transition-transform duration-500 ease-snap group-hover:scale-y-100 group-focus-visible:scale-y-100" style={{ background: p.accent }} />
         <span className="relative flex flex-col gap-4 px-0 py-6 transition-[padding,color] duration-500 group-hover:px-4 md:flex-row md:items-end md:justify-between md:py-8" style={active ? { color: p.onAccent } : undefined}>
           <span className="block">
-            <span className="block font-display text-[clamp(2.8rem,9.5vw,9rem)] font-extrabold leading-[0.9] tracking-[-0.04em]">{p.title}</span>
+            <span className="block font-display text-[clamp(3.6rem,11vw,10.5rem)] leading-[0.95]"><Wiggle text={p.title} /></span>
             <span className="label mt-3 block" style={active ? { color: 'inherit' } : undefined}>{p.discipline}{p.year ? ` · ${p.year}` : ''}</span>
           </span>
           <span className="max-w-[34ch] text-base md:pb-2 md:text-right">{p.summary}</span>
@@ -38,7 +38,7 @@ function MoreRow({ p }) {
   return (
     <li className="border-t border-line last:border-b">
       <Link to={`/work/${p.slug}`} data-cursor="open" className="group grid items-baseline gap-2 py-5 md:grid-cols-12 md:gap-6">
-        <span className="font-display text-3xl font-bold leading-none tracking-tight md:col-span-5 md:text-4xl"><span className="u-link">{p.title}</span></span>
+        <span className="font-display text-4xl leading-none md:col-span-5 md:text-5xl"><span className="u-link">{p.title}</span></span>
         <span className="label md:col-span-3">{p.discipline}</span>
         <span className="max-w-[56ch] text-[15px] leading-snug md:col-span-4">{p.summary}</span>
       </Link>

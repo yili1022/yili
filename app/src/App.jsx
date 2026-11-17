@@ -34,7 +34,7 @@ function Routes() {
   const m = route.path.match(/^\/work\/([\w-]+)$/)
   useEffect(() => {
     const p = m && bySlug(m[1])
-    document.title = p ? `${p.title} — Yi Li (GG)` : route.path === '/playground' ? 'Playground — Yi Li (GG)' : 'Yi Li (GG) — Brand and interaction designer'
+    document.title = p ? `${p.title} — Yi Li` : route.path === '/playground' ? 'Playground — Yi Li' : 'Yi Li — Brand and interaction designer'
   }, [route.path, m])
   if (m) return <Project slug={m[1]} />
   if (route.path === '/playground') return <Playground />
@@ -44,13 +44,13 @@ function Routes() {
 export default function App() {
   const [toast, setToast] = useState(false)
   useEffect(() => {
-    console.log('%cYi Li (GG)', 'font:700 20px system-ui', '— hello. Email: ' + SITE.email)
+    console.log('%cYi Li', 'font:700 22px cursive', '— hello. Email: ' + SITE.email)
     let buf = ''
     const k = (e) => {
       if (/input|textarea/i.test(e.target.tagName)) return
-      buf = (buf + e.key.toLowerCase()).slice(-2)
-      if (buf === 'gg') {
-        window.dispatchEvent(new Event('gg:burst'))
+      buf = (buf + e.key.toLowerCase()).slice(-5)
+      if (buf === 'hello') {
+        window.dispatchEvent(new Event('yl:burst'))
         setToast(true); setTimeout(() => setToast(false), 2200)
       }
     }
@@ -63,7 +63,7 @@ export default function App() {
       <Routes />
       <Footer />
       <Cursor />
-      <Toast show={toast}>You found it. GG.</Toast>
+      <Toast show={toast}>Hello back!</Toast>
     </RouterProvider>
   )
 }

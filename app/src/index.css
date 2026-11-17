@@ -8,25 +8,20 @@
    (never text on paper), so any accent can be swapped in safely.
 ------------------------------------------------------------------- */
 :root {
-  --paper: #f3eee5;
-  --ink: #232320;
-  --blue: #2b3ae6;
-  --lime: #d8f04b;
-  --blush: #f4b9c9;
+  --paper: #151211;
+  --ink: #f2e8d6;
+  --blue: #e63329;
+  --lime: #f2e8d6;
+  --blush: #f08a7a;
 
   --accent: var(--blue);
-  --on-accent: var(--paper);
+  --on-accent: #f2e8d6;
   --mute: color-mix(in srgb, var(--ink) 70%, var(--paper));
   --line: color-mix(in srgb, var(--ink) 16%, var(--paper));
 
   /* spacing: 8px scale, fluid gutter */
   --gutter: clamp(16px, 3.2vw, 48px);
-  /* tile size for the GG mark: fits 4.5 tiles across on phones */
-  --t: calc((100vw - 2 * var(--gutter)) / 4.5);
-}
-@media (min-width: 768px) {
-  :root { --t: min(11vw, 176px); }
-}
+  }
 
 html {
   background: var(--paper);
@@ -36,7 +31,7 @@ html {
 body {
   margin: 0;
   background: var(--paper);
-  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  font-family: 'Bricolage Grotesque Variable', system-ui, sans-serif;
   font-size: 1.0625rem;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -52,7 +47,7 @@ body::before {
   z-index: 80;
   pointer-events: none;
   opacity: 0.55;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .14 0 0 0 0 .13 0 0 0 0 .12 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .95 0 0 0 0 .9 0 0 0 0 .84 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 ::selection { background: var(--accent); color: var(--on-accent); }
@@ -144,13 +139,6 @@ img, svg, video { display: block; max-width: 100%; }
   position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
 }
 
-/* the GG mark grid */
-.gg-mark {
-  position: relative;
-  width: calc(var(--t) * 4.3);
-  height: calc(var(--t) * 2);
-}
-
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
@@ -159,3 +147,12 @@ img, svg, video { display: block; max-width: 100%; }
 @keyframes spin-slow { to { transform: rotate(360deg); } }
 .stamp-spin { animation: spin-slow 32s linear infinite; transform-box: view-box; transform-origin: 100px 100px; }
 .stamp-spin:hover { animation-duration: 6s; }
+
+/* handwritten display: single weight, so never synthesize bold, and relax the tight tracking */
+body { font-synthesis: none; }
+.font-display, h1, h2, h3 { font-weight: 400 !important; letter-spacing: -0.005em !important; font-synthesis: none; }
+.font-hand { font-family: 'Caveat', cursive; }
+.wig { display: inline; }
+.wig span span > span { display: inline-block; transition: transform .25s cubic-bezier(.34,1.56,.64,1); }
+.wig span span > span:hover { transform: translateY(-.08em) rotate(-7deg) scale(1.08); }
+.wig span span > span:nth-child(even):hover { transform: translateY(-.08em) rotate(6deg) scale(1.08); }

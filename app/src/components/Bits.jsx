@@ -2,10 +2,10 @@ import { useRef } from 'react'
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
 
 const SWATCHES = [
-  { name: 'Ultramarine', value: 'var(--blue)', on: 'var(--paper)', css: '#2b3ae6' },
-  { name: 'Chartreuse', value: 'var(--lime)', on: 'var(--ink)', css: '#d8f04b' },
-  { name: 'Blush', value: 'var(--blush)', on: 'var(--ink)', css: '#f4b9c9' },
-  { name: 'Charcoal', value: 'var(--ink)', on: 'var(--paper)', css: '#232320' },
+  { name: 'Red', value: 'var(--blue)', on: '#f2e8d6', css: '#e63329' },
+  { name: 'Cream', value: 'var(--lime)', on: '#151211', css: '#f2e8d6' },
+  { name: 'Salmon', value: 'var(--blush)', on: '#151211', css: '#f08a7a' },
+  { name: 'Gold', value: '#f2b33d', on: '#151211', css: '#f2b33d' },
 ]
 
 export function Swatches({ current, onPick }) {
@@ -20,7 +20,7 @@ export function Swatches({ current, onPick }) {
           aria-pressed={current === s.name}
           data-cursor="set"
           onClick={() => onPick(s)}
-          className="h-8 w-8 border-[1.5px] border-ink transition-transform hover:-translate-y-1 aria-pressed:-translate-y-1 aria-pressed:outline aria-pressed:outline-2 aria-pressed:outline-offset-2 aria-pressed:outline-ink"
+          className="h-8 w-8 border-[1.5px] border-ink/60 transition-transform hover:-translate-y-1 aria-pressed:-translate-y-1 aria-pressed:outline aria-pressed:outline-2 aria-pressed:outline-offset-2 aria-pressed:outline-ink"
           style={{ background: s.css }}
         />
       ))}
@@ -40,13 +40,13 @@ export function Stamp({ className = '' }) {
           <textPath href="#circ" textLength="486" lengthAdjust="spacing">{text}</textPath>
         </text>
       </g>
-      <text x="100" y="112" textAnchor="middle" fontFamily="Bricolage Grotesque, sans-serif" fontWeight="800" fontSize="40" fill="var(--on-accent)">GG</text>
+      <text x="100" y="114" textAnchor="middle" fontFamily="Caveat Brush, cursive" fontSize="46" fill="var(--on-accent)">Yi Li</text>
     </svg>
   )
 }
 
 function Word({ children, progress, range }) {
-  const o = useTransform(progress, range, [0.14, 1])
+  const o = useTransform(progress, range, [0.32, 1])
   return <motion.span style={{ opacity: o }} className="mr-[0.28em] inline-block">{children}</motion.span>
 }
 
@@ -75,5 +75,18 @@ export function Section({ id, label, children, className = '', dark = false }) {
       <h2 id={`${id}-h`} className={`label mb-8 ${dark ? '!text-paper/70' : ''}`}>{label}</h2>
       {children}
     </section>
+  )
+}
+
+export function Wiggle({ text }) {
+  return (
+    <span className="wig" aria-label={text}>
+      {text.split(' ').map((w, wi, arr) => (
+        <span key={wi} aria-hidden="true">
+          <span className="!inline whitespace-nowrap"><span className="!inline-block">{[...w].map((c, i) => <span key={i}>{c}</span>)}</span></span>
+          {wi < arr.length - 1 ? ' ' : ''}
+        </span>
+      ))}
+    </span>
   )
 }

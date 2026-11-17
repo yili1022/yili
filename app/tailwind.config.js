@@ -15,7 +15,9 @@ export default {
         line: 'var(--line)',
       },
       fontFamily: {
-        display: ['"Bricolage Grotesque"', 'system-ui', 'sans-serif'],
+        display: ['"Caveat Brush"', '"Caveat"', 'cursive'],
+        hand: ['"Caveat"', 'cursive'],
+        sans: ['"Bricolage Grotesque Variable"', 'system-ui', 'sans-serif'],
         serif: ['"Instrument Serif"', 'Georgia', 'serif'],
         mono: ['"DM Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },

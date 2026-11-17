@@ -1,12 +1,11 @@
 // Editable site-wide content. Change values here; no component edits needed.
 export const SITE = {
   name: 'Yi Li',
-  nickname: 'GG',
   school: 'School of Visual Arts, New York',
   headline: 'Brand identities and digital experiences, built as one system.',
   intro:
-    'I’m Yi Li, GG to friends: a senior at SVA in New York. I design visual identities and interactive websites, and I like it best when the two feel like the same thing.',
-  invite: 'Drag the tiles, pick a color, then scroll.',
+    'I’m Yi Li, a senior at SVA in New York. I design visual identities and interactive websites, and I like it best when the two feel like the same thing.',
+  invite: 'Drag the letters, toss the stickers, pick a color, then scroll.',
   philosophy:
     'I want to build visual identities and digital experiences that create genuine connections between people and brands.',
   email: 'yli183@sva.edu',
