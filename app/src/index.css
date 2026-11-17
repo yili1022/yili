@@ -1,0 +1,161 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------------
+   Design tokens
+   Paper and charcoal carry everything. Accent colours are fills only
+   (never text on paper), so any accent can be swapped in safely.
+------------------------------------------------------------------- */
+:root {
+  --paper: #f3eee5;
+  --ink: #232320;
+  --blue: #2b3ae6;
+  --lime: #d8f04b;
+  --blush: #f4b9c9;
+
+  --accent: var(--blue);
+  --on-accent: var(--paper);
+  --mute: color-mix(in srgb, var(--ink) 70%, var(--paper));
+  --line: color-mix(in srgb, var(--ink) 16%, var(--paper));
+
+  /* spacing: 8px scale, fluid gutter */
+  --gutter: clamp(16px, 3.2vw, 48px);
+  /* tile size for the GG mark: fits 4.5 tiles across on phones */
+  --t: calc((100vw - 2 * var(--gutter)) / 4.5);
+}
+@media (min-width: 768px) {
+  :root { --t: min(11vw, 176px); }
+}
+
+html {
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+  background: var(--paper);
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* paper grain: one static tile, no live filters */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  pointer-events: none;
+  opacity: 0.55;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .14 0 0 0 0 .13 0 0 0 0 .12 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+::selection { background: var(--accent); color: var(--on-accent); }
+
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+img, svg, video { display: block; max-width: 100%; }
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+.on-dark :focus-visible { outline-color: var(--paper); }
+
+/* ------------------------------------------------------------------
+   Shared components
+------------------------------------------------------------------- */
+.label {
+  font-family: 'DM Mono', ui-monospace, monospace;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--mute);
+}
+.label-ink { color: var(--ink); }
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  overflow: hidden;
+  padding: 0.7rem 1.25rem;
+  border: 1.5px solid currentColor;
+  font-weight: 500;
+  font-size: 0.95rem;
+  line-height: 1.1;
+  isolation: isolate;
+}
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.35s cubic-bezier(0.76, 0, 0.24, 1);
+}
+.btn:hover::before, .btn:focus-visible::before { transform: scaleY(1); }
+.btn:hover, .btn:focus-visible { color: var(--on-accent); border-color: var(--accent); }
+.btn-solid { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.btn-solid:hover, .btn-solid:focus-visible { color: var(--on-accent); }
+
+.chip-btn {
+  font-family: 'DM Mono', ui-monospace, monospace;
+  font-size: 12px;
+  line-height: 1;
+  padding: 0.5rem 0.75rem;
+  border: 1.5px solid var(--ink);
+  background: var(--paper);
+  transition: background 0.2s, color 0.2s;
+}
+.chip-btn:hover, .chip-btn:focus-visible, .chip-btn[aria-pressed='true'] {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* underline that wipes in from the left */
+.u-link {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 100% 1.5px;
+  transition: background-size 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+}
+.u-link:hover, .u-link:focus-visible { background-size: 100% 100%; color: var(--on-accent); background-image: linear-gradient(var(--accent), var(--accent)); }
+
+.tape {
+  position: absolute;
+  width: 84px;
+  height: 26px;
+  background: color-mix(in srgb, var(--paper) 62%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--ink) 10%, transparent);
+  backdrop-filter: none;
+}
+
+.sr-only-focusable:not(:focus) {
+  position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+/* the GG mark grid */
+.gg-mark {
+  position: relative;
+  width: calc(var(--t) * 4.3);
+  height: calc(var(--t) * 2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
+
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+.stamp-spin { animation: spin-slow 32s linear infinite; transform-box: view-box; transform-origin: 100px 100px; }
+.stamp-spin:hover { animation-duration: 6s; }

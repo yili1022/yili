@@ -1,141 +1,31 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="paper">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Yi Li — Designer</title>
-  <meta name="description" content="Yi Li is a senior design student at the School of Visual Arts in New York, working in branding, visual identity and UI design." />
-  <meta name="theme-color" content="#E8EAEE" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Yi Li — Designer" />
-  <meta property="og:description" content="Branding, visual identity and UI design. Selected work by Yi Li." />
-  <meta property="og:image" content="https://yili1022.github.io/images/dimyum-poster.jpg" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%232230E0'/%3E%3Cpath d='M9 8l7 9 7-9M16 17v8' fill='none' stroke='%23E8EAEE' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Schibsted+Grotesk:wght@400..900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <a class="skip" href="#work">Skip to work</a>
-
-  <header class="top" id="top">
-    <a class="brand" href="#top">Yi Li</a>
-    <nav aria-label="Main">
-      <a href="#work">Work</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-      <button type="button" class="invert" id="invert" aria-pressed="false">Invert</button>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero" id="hero">
-      <h1 class="sr">Yi Li</h1>
-      <p class="intro">Senior design student at the School of Visual Arts in New York, working in branding, visual identity and UI design.</p>
-
-      <figure class="lettering">
-        <svg id="lettering" viewBox="0 0 900 400" tabindex="0" role="img"
-             aria-label="Yi Li, drawn in monoline lettering. Arrow keys change its weight and slant.">
-          <g class="guides" aria-hidden="true">
-            <line x1="0" x2="900" y1="70" y2="70" />
-            <line x1="0" x2="900" y1="190" y2="190" />
-            <line x1="0" x2="900" y1="330" y2="330" />
-            <text x="896" y="60" text-anchor="end">Cap height</text>
-            <text x="896" y="180" text-anchor="end">x-height</text>
-            <text x="896" y="320" text-anchor="end">Baseline</text>
-          </g>
-          <g id="glyphs" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="26">
-            <path class="stroke s1" pathLength="1" d="M60 70 L160 190 L260 70" />
-            <path class="stroke s2" pathLength="1" d="M160 190 V330" />
-            <path class="stroke s3" pathLength="1" d="M370 190 V330" />
-            <path class="stroke s4" pathLength="1" d="M490 70 V330 H650" />
-            <path class="stroke s5" pathLength="1" d="M760 190 V330" />
-            <path class="dot d1" data-cx="370" data-cy="115" d="M370 115 v0.01" />
-            <path class="dot d2" data-cx="760" data-cy="115" d="M760 115 v0.01" />
-          </g>
-        </svg>
-      </figure>
-
-      <div class="controls">
-        <p class="readout" aria-hidden="true">
-          <span>Weight <b id="rw">26</b></span>
-          <span>Slant <b id="rs">0°</b></span>
-        </p>
-        <button type="button" class="pill" id="term">Terminals: <span id="term-name">Round</span></button>
-        <p class="hint">Move or drag across the letters to change weight and slant.</p>
-      </div>
-    </section>
-
-    <section class="work" id="work">
-      <div class="work-head">
-        <h2>Selected work</h2>
-        <div class="rail-nav">
-          <button type="button" class="pill" id="r-prev" aria-label="Previous project">Prev</button>
-          <button type="button" class="pill" id="r-next" aria-label="Next project">Next</button>
-        </div>
-      </div>
-
-      <div class="rail" id="rail" tabindex="0" role="region" aria-label="Selected work. Scroll sideways."></div>
-
-      <div class="ruler" id="ruler">
-        <div class="ticks" id="ticks"></div>
-        <div class="handle" id="handle" aria-hidden="true"></div>
-      </div>
-      <p class="ruler-now" id="ruler-now" aria-hidden="true"></p>
-    </section>
-
-    <section class="about" id="about">
-      <h2>About</h2>
-      <div class="about-body">
-        <p class="about-lead">I’m a senior design student at the School of Visual Arts (SVA) in New York, with a strong focus on branding, visual identity, and UI design. My work centers on building clear visual systems and thoughtful digital experiences. I’m deeply interested in how structure, typography, and interaction come together to shape perception and behavior.</p>
-        <p class="about-more">I’m naturally curious and constantly exploring new tools, design methods, and emerging technologies. From visual identities to interface systems, I approach every project with both analytical thinking and aesthetic sensitivity. For me, design is not just about making things look good — it’s about creating clarity, intention, and meaningful connection. I aim to grow into a multidisciplinary designer who can think strategically, design visually, and build with purpose.</p>
-        <p class="focus">Branding, visual identity, UI design, packaging, typography, interaction and creative coding.</p>
-      </div>
-    </section>
-
-    <section class="contact" id="contact">
-      <h2>Contact</h2>
-      <div class="contact-body">
-        <p class="contact-lead">Have a project in mind, or just want to say hello?</p>
-        <a class="mail" href="mailto:yli183@sva.edu">yli183@sva.edu</a>
-        <p class="contact-links">
-          <button type="button" class="pill" id="copy-mail">Copy email</button>
-          <a href="https://www.linkedin.com/in/yi-li-33050132a" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="https://www.instagram.com/kojikojily" target="_blank" rel="noopener">Instagram</a>
-          <a href="https://github.com/yili1022" target="_blank" rel="noopener">GitHub</a>
-        </p>
-      </div>
-    </section>
-  </main>
-
-  <footer class="foot">
-    <span>© <span id="year"></span> Yi Li</span>
-    <a href="#top">Back to top</a>
-  </footer>
-
-  <div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-labelledby="v-title" hidden>
-    <div class="v-bar">
-      <p class="v-title" id="v-title"></p>
-      <button type="button" class="pill" id="v-close">Close</button>
-    </div>
-    <div class="v-stage" id="v-stage"></div>
-    <div class="v-foot">
-      <p class="v-desc" id="v-desc"></p>
-      <div class="v-pager" id="v-pager" hidden>
-        <button type="button" class="pill" id="v-prev" aria-label="Previous image">Prev</button>
-        <span id="v-count"></span>
-        <button type="button" class="pill" id="v-next" aria-label="Next image">Next</button>
-      </div>
-    </div>
-  </div>
-
-  <p class="toast" id="toast" role="status" aria-live="polite"></p>
-
-  <noscript>
-    <p style="padding:24px">This portfolio needs JavaScript to show the work. Contact: <a href="mailto:yli183@sva.edu">yli183@sva.edu</a></p>
-  </noscript>
-
-  <script src="script.js"></script>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Yi Li (GG) — Brand and interaction designer</title>
+    <meta name="description" content="Portfolio of Yi Li (GG), a senior design student at the School of Visual Arts in New York working in brand identity, visual systems and interactive design." />
+    <meta name="theme-color" content="#F3EEE5" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Yi Li (GG) — Brand and interaction designer" />
+    <meta property="og:description" content="Visual identities and digital experiences, built as one system." />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" crossorigin src="./assets/index-Dh1YZwLF.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DbZyFUUA.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <p style="padding:24px;font-family:system-ui">
+        This portfolio needs JavaScript to show the work. Contact Yi Li at
+        <a href="mailto:yli183@sva.edu">yli183@sva.edu</a>.
+      </p>
+    </noscript>
+  </body>
 </html>
