@@ -27,7 +27,7 @@ function Row({ p, onHover, active }) {
         </span>
         {/* mobile: preview is always visible */}
         <span className="block px-0 pb-6 md:hidden">
-          <Plate aspect="16/10" accent={p.accent} motif={p.motif} label={p.title} />
+          <Plate aspect="16/10" accent={p.accent} motif={p.motif} label={p.title} src={p.images?.[0]?.src} alt={`${p.title} preview`} />
         </span>
       </Link>
     </li>
@@ -72,7 +72,7 @@ export default function Work() {
         animate={{ opacity: cur ? 1 : 0, scale: cur ? 1 : 0.85 }}
         transition={{ duration: 0.25 }}
       >
-        {cur && <Plate aspect="4/3" accent={cur.accent} motif={cur.motif} label={cur.title} />}
+        {cur && <Plate aspect="4/3" accent={cur.accent} motif={cur.motif} label={cur.title} src={cur.images?.[0]?.src} />}
       </motion.div>
 
       <h3 className="label mb-4 mt-20">More work</h3>

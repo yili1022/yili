@@ -18,7 +18,7 @@ export const FEATURED = [
     tools: PH,
     sections: { context: PH, challenge: PH, process: PH, concepts: PH, deliverables: PH, reflection: PH },
     images: [
-      { label: 'Hero image', aspect: '16/10', wide: true },
+      { label: 'CANOPY logo over forest', aspect: '1654/926', wide: true, src: 'images/canopy-hero.jpg' },
       { label: 'Logo and mark', aspect: '1/1' },
       { label: 'Color and type system', aspect: '1/1' },
       { label: 'Applications', aspect: '4/5' },
