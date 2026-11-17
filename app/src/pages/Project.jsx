@@ -40,7 +40,11 @@ export default function Project({ slug }) {
       </div>
 
       <div className="px-gutter">
-        <Plate aspect={p.images[0].aspect} accent={p.accent} motif={p.motif} label={p.images[0].label} src={p.images[0].src} alt={`${p.title}: ${p.images[0].label}`} />
+        {p.video ? (
+          <video className="w-full bg-ink" controls playsInline preload="metadata" poster={p.video.poster} src={p.video.src} aria-label={`${p.title} animation`} />
+        ) : (
+          <Plate aspect={p.images[0].aspect} accent={p.accent} motif={p.motif} label={p.images[0].label} src={p.images[0].src} alt={`${p.title}: ${p.images[0].label}`} />
+        )}
       </div>
 
       <div className="grid gap-x-12 gap-y-10 px-gutter py-16 md:grid-cols-12 md:py-24">
@@ -64,7 +68,7 @@ export default function Project({ slug }) {
       </div>
 
       <div className="grid gap-4 px-gutter pb-20 md:grid-cols-2 md:gap-6">
-        {p.images.slice(1).map((im, n) => (
+        {(p.video ? [] : p.images.slice(1)).map((im, n) => (
           <div key={n} className={im.wide ? 'md:col-span-2' : ''}>
             <Plate aspect={im.aspect} accent={p.accent} motif={p.motif} label={im.label} src={im.src} alt={`${p.title}: ${im.label}`} />
           </div>

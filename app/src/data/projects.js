@@ -71,6 +71,15 @@ export const FEATURED = [
 // Earlier work brought over from the previous portfolio. Descriptions are the originals.
 export const MORE = [
   {
+    slug: 'dim-yum',
+    title: 'Dim Yum',
+    discipline: 'Logo animation / Brand identity',
+    summary: 'Logo animation for Dim Yum, a brand built around dim sum, yumcha and cocktails.',
+    tags: ['Logo animation', 'Brand identity'],
+    video: { src: 'videos/dimyum.mp4', poster: 'images/dimyum-poster.jpg' },
+    accent: 'var(--blue)', onAccent: 'var(--ink)', motif: 'rings',
+  },
+  {
     slug: 'anchor-gin',
     title: 'Anchor Gin',
     discipline: 'Packaging / Brand identity',
@@ -103,7 +112,7 @@ export const MORE = [
   tools: null,
   sections: { context: p.summary, challenge: PH, process: PH, concepts: PH, deliverables: p.tags.join(', '), reflection: PH },
   images: [
-    { label: 'Hero image', aspect: '16/10', wide: true },
+    { label: 'Hero image', aspect: '16/10', wide: true, src: p.video?.poster },
     { label: 'Detail', aspect: '1/1' },
     { label: 'Detail', aspect: '1/1' },
     { label: 'System overview', aspect: '16/10', wide: true },
